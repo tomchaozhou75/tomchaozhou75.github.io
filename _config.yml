@@ -233,6 +233,7 @@ plugins:
 
   # al-folio plugins
   - al_citations
+  - al_ext_posts
 
 # Sitemap settings
 defaults:
