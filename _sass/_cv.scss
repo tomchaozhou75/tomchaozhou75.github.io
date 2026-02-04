@@ -64,6 +64,16 @@ i.icondepartment {
   margin-right: 0.3rem;
 }
 
+i.iconcertificate,
+i.iconreference {
+  color: var(--global-theme-color);
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  width: 1rem;
+  text-align: center;
+}
+
 table.institution {
   margin-bottom: 1rem;
 }

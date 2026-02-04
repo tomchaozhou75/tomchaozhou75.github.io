@@ -6,11 +6,10 @@
   {% for entry in entries %}
     <li class="list-group-item">
       {% if entry.icon %}
-        <i class="{{ entry.icon }}"></i>
+        <i class="{{ entry.icon }} iconreference"></i>
       {% else %}
-        <i class="fa-solid fa-user"></i>
+        <i class="fa-solid fa-user iconreference"></i>
       {% endif %}
-      &nbsp;
       <strong>{{ entry.name }}</strong>
       <p>{{ entry.reference | markdownify | remove: '<p>' | remove: '</p>' }}</p>
     </li>

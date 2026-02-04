@@ -6,11 +6,10 @@
   {% for entry in entries %}
     <li class="list-group-item">
       {% if entry.icon %}
-        <i class="{{ entry.icon }}"></i>
+        <i class="{{ entry.icon }} iconcertificate"></i>
       {% else %}
-        <i class="fa-solid fa-award"></i>
+        <i class="fa-solid fa-award iconcertificate"></i>
       {% endif %}
-      &nbsp;
       {% if entry.url %}
         <strong
           ><a href="{{ entry.url }}" target="_blank">{{ entry.name }}</a></strong
