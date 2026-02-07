@@ -52,3 +52,9 @@ jobs:
 
       - name: Run comments integration test 🧪
         run: bash test/integration_comments.sh
+
+      - name: Run plugin toggle integration test 🔌
+        run: bash test/integration_plugin_toggles.sh
+
+      - name: Run distill integration test 📄
+        run: bash test/integration_distill.sh

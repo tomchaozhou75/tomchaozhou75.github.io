@@ -99,12 +99,12 @@
 {% endif %}
 {% if site.plugins contains 'al_analytics' %}
   <!-- Analytics -->
-  {% al_analytics_scripts %}
+  {% include plugins/al_analytics_scripts.liquid %}
 {% endif %}
 
 {% if site.plugins contains 'al_img_tools' %}
   <!-- Image Features -->
-  {% al_img_tools_scripts %}
+  {% include plugins/al_img_tools_scripts.liquid %}
 {% endif %}
 
 {% if site.enable_progressbar %}

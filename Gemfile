@@ -40,7 +40,7 @@ end
 
 # Gems for al-folio plugins
 group :al_folio_plugins do
-    gem 'al_analytics'
+    gem 'al_analytics', '>= 0.1.1'
     gem 'al_citations'
     gem 'al_ext_posts'
     gem 'al_img_tools'
@@ -48,6 +48,6 @@ group :al_folio_plugins do
     gem 'al_search'
     gem 'al_charts'
     gem 'al_math'
-    gem 'al_comments', '>= 0.1.1'
+    gem 'al_comments', '>= 0.1.2'
     gem 'al_newsletter'
 end
