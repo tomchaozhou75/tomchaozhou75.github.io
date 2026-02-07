@@ -135,8 +135,8 @@
   {% al_img_tools_styles %}
 {% endif %}
 
-{% if page.tikzjax %}
-  <link defer rel="stylesheet" type="text/css" href="{{ '/assets/css/tikzjax.min.css' | relative_url | bust_file_cache }}">
+{% if site.plugins contains 'al_math' %}
+  {% al_math_styles %}
 {% endif %}
 
 {% if site.enable_cookie_consent %}

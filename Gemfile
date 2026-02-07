@@ -47,4 +47,5 @@ group :al_folio_plugins do
     gem 'al_utils', :git => 'https://github.com/al-org-dev/al-utils.git'
     gem 'al_search', :git => 'https://github.com/al-org-dev/al-search.git'
     gem 'al_charts', :git => 'https://github.com/al-org-dev/al-charts.git'
+    gem 'al_math', :git => 'https://github.com/al-org-dev/al-math.git'
 end
