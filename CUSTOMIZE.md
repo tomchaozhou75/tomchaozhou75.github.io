@@ -152,7 +152,7 @@ If changes don't appear after refreshing, try:
 
 - **Hard refresh** to reload the page ignoring cached content:
   - [Shift + F5 on Chromium-based browsers](https://support.google.com/chrome/answer/157179#zippy=%2Cwebpage-shortcuts)
-  - [Ctrl + F5 on Firefox-based browsers](https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly)
+  - Ctrl + F5 on Firefox-based browsers
 - **Clear your browser cache** completely
 - **Use a private/incognito session** to ensure no cached content:
   - [Chrome](https://support.google.com/chrome/answer/95464)
