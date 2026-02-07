@@ -240,6 +240,7 @@ plugins:
   - al_utils
   - al_search
   - al_charts
+  - al_math
 
 # Sitemap settings
 defaults:
