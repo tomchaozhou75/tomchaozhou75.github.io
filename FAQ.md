@@ -112,11 +112,14 @@ Note that libraries tend to be deprecated and support for them dropped as they a
 Use the SemVer migration flow:
 
 1. `bundle update`
-2. `bundle exec al-folio upgrade audit`
-3. `bundle exec al-folio upgrade apply --safe` (optional)
-4. `bundle exec al-folio upgrade report`
+2. `npm ci && npm run build:css`
+3. `bundle exec al-folio upgrade audit`
+4. `bundle exec al-folio upgrade apply --safe` (optional)
+5. `bundle exec al-folio upgrade report`
 
 Then resolve all **Blocking** findings in `al-folio-upgrade-report.md`. Non-blocking findings are deprecated patterns you can migrate incrementally.
+
+For starter-based sites, keep `theme: al_folio_core` and avoid copying theme internals into your repo unless you intentionally need overrides.
 
 ## How do I handle legacy Bootstrap-marked pages on Tailwind-first `v1.x`?
 
@@ -134,6 +137,8 @@ Compatibility timeline:
 - Supported through `v1.2`
 - Deprecated in `v1.3`
 - Removed in `v2.0`
+
+The compatibility runtime (`/assets/css/bootstrap-compat.css` and `/assets/js/bootstrap-compat.js`) is provided by the `al_folio_bootstrap_compat` gem when enabled.
 
 ## I am trying to deploy my site, but it fails with `Could not find gem 'jekyll-diagrams' in locally installed gems`. How do I fix that?
 

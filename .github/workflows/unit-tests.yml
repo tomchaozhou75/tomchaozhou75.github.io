@@ -45,10 +45,19 @@ jobs:
           python-version: "3.13"
           cache: "pip"
 
+      - name: Setup Node 🧰
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
       - name: Build Tailwind CSS 🎨
         run: |
           npm ci
           npm run build:css
+
+      - name: Run style contract lint 🧷
+        run: npm run lint:style-contract
 
       - name: Install build prerequisites 🔧
         run: |

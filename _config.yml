@@ -50,6 +50,14 @@ external_services:
 al_folio:
   api_version: 1
   style_engine: tailwind
+  tailwind:
+    version: 4.1.18
+    preflight: false
+    css_entry: assets/tailwind/app.css
+  distill:
+    engine: distillpub-template
+    source: alshedivat/distillpub-template#al-folio
+    allow_remote_loader: false
   compat:
     bootstrap:
       enabled: false
@@ -230,6 +238,9 @@ exclude:
 keep_files:
   - CNAME
   - .nojekyll
+
+# Use al_folio_core as the theme runtime; local files can still override theme files.
+theme: al_folio_core
 
 # Plug-ins
 plugins:

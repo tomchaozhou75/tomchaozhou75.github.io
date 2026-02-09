@@ -40,9 +40,9 @@ end
 
 # Gems for al-folio plugins
 group :al_folio_plugins do
-    gem 'al_folio_core', :git => 'https://github.com/al-org-dev/al-folio-core.git', :branch => 'main'
-    gem 'al_folio_upgrade', :git => 'https://github.com/al-org-dev/al-folio-upgrade.git', :branch => 'main'
-    gem 'al_folio_bootstrap_compat', :git => 'https://github.com/al-org-dev/al-folio-bootstrap-compat.git', :branch => 'main'
+    gem 'al_folio_core', :git => 'https://github.com/al-org-dev/al-folio-core.git', :branch => 'codex/tailwind-v1-upgrade'
+    gem 'al_folio_upgrade', :git => 'https://github.com/al-org-dev/al-folio-upgrade.git', :branch => 'codex/tailwind-v1-upgrade'
+    gem 'al_folio_bootstrap_compat', :git => 'https://github.com/al-org-dev/al-folio-bootstrap-compat.git', :branch => 'codex/tailwind-v1-upgrade'
 
     gem 'al_analytics', '>= 0.1.1'
     gem 'al_citations'

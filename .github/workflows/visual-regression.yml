@@ -1,0 +1,93 @@
+name: Visual regression checks
+
+on:
+  pull_request:
+    branches: [main, master, v1.0-dev]
+    paths:
+      - '_includes/**'
+      - '_layouts/**'
+      - '_sass/**'
+      - 'assets/**'
+      - 'test/visual/**'
+      - '.github/workflows/visual-regression.yml'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+  push:
+    branches: [v1.0-dev]
+    paths:
+      - '_includes/**'
+      - '_layouts/**'
+      - '_sass/**'
+      - 'assets/**'
+      - 'test/visual/**'
+      - '.github/workflows/visual-regression.yml'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+
+jobs:
+  visual-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout candidate 🛎️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Ruby 💎
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.5'
+          bundler-cache: true
+
+      - name: Setup Node 🧰
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install JS deps 📦
+        run: npm ci
+
+      - name: Build candidate CSS 🎨
+        run: npm run build:css
+
+      - name: Prepare baseline worktree (v0.16.3) 🧱
+        run: |
+          git worktree add ../al-folio-baseline v0.16.3
+          (cd ../al-folio-baseline && npm ci)
+
+      - name: Install Playwright browser 🧪
+        run: npx playwright install --with-deps chromium
+
+      - name: Run visual parity checks 👀
+        env:
+          BASELINE_URL: http://127.0.0.1:4100/al-folio
+          NO_WEBSERVER: '1'
+        run: |
+          (cd ../al-folio-baseline && bundle exec jekyll serve --host 127.0.0.1 --port 4100 --baseurl /al-folio --quiet > /tmp/jekyll-baseline.log 2>&1) &
+          (bundle exec jekyll serve --host 127.0.0.1 --port 4000 --baseurl /al-folio --quiet > /tmp/jekyll-candidate.log 2>&1) &
+          npx wait-on http://127.0.0.1:4000/al-folio/ http://127.0.0.1:4100/al-folio/
+          npm run test:visual -- --reporter=line
+
+      - name: Upload Playwright report 📄
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          if-no-files-found: ignore
+
+      - name: Upload Jekyll logs 📄
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jekyll-visual-logs
+          path: |
+            /tmp/jekyll-baseline.log
+            /tmp/jekyll-candidate.log
+          if-no-files-found: ignore

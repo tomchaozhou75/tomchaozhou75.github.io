@@ -5,9 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
     { trigger: "a.bibtex", target: ".bibtex.hidden" },
   ];
 
-  const closePanels = (scope, exceptTarget) => {
+  const resolveToggleScope = (link) => {
+    const linksContainer = link.closest(".links");
+    if (linksContainer && linksContainer.parentElement) {
+      return linksContainer.parentElement;
+    }
+
+    return link.closest("li, .card-body, article, .post, .row") || link.parentElement;
+  };
+
+  const closePanels = (scope, exceptPanel) => {
     scope.querySelectorAll(".abstract.hidden.open, .award.hidden.open, .bibtex.hidden.open").forEach((panel) => {
-      if (!panel.matches(exceptTarget)) {
+      if (panel !== exceptPanel) {
         panel.classList.remove("open");
       }
     });
@@ -17,14 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(spec.trigger).forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        const scope = link.closest("li, .card-body, .bibtex, .award, .abstract") || link.parentElement;
+        const scope = resolveToggleScope(link);
         if (!scope) {
           return;
         }
 
-        closePanels(scope, spec.target);
         const panel = scope.querySelector(spec.target);
         if (panel) {
+          closePanels(scope, panel);
           panel.classList.toggle("open");
         }
       });
@@ -122,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     iframe.addEventListener("load", applyNotebookStyling);
   });
 
-  if (window.AlFolioCompat && typeof window.AlFolioCompat.initPopovers === "function") {
-    window.AlFolioCompat.initPopovers(document);
+  if (window.AlFolioUi && typeof window.AlFolioUi.initPopovers === "function") {
+    window.AlFolioUi.initPopovers(document);
   }
 });

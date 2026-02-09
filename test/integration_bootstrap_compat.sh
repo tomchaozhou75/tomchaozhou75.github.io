@@ -36,5 +36,7 @@ bundle exec jekyll build --config "_config.yml,${override_file}" -d "${site_with
 index_with_compat="${site_with_compat}/index.html"
 grep -q '/assets/css/bootstrap-compat.css' "${index_with_compat}"
 grep -q '/assets/js/bootstrap-compat.js' "${index_with_compat}"
+[ -f "${site_with_compat}/assets/css/bootstrap-compat.css" ]
+[ -f "${site_with_compat}/assets/js/bootstrap-compat.js" ]
 
 echo "bootstrap compatibility integration checks passed"

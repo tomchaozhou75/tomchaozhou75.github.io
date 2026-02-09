@@ -280,7 +280,7 @@ bundle update --all
 
 ## Upgrading from a previous version
 
-Starting with `v1.0`, **al-folio** ships an upgrade CLI and migration manifests under [`migrations/`](migrations/) to make minor upgrades (`v1.0 -> v1.1 -> v1.2`) predictable.
+Starting with `v1.0`, **al-folio** ships an upgrade CLI (`al_folio_upgrade`) and versioned migration manifests from `al_folio_core` to make minor upgrades (`v1.0 -> v1.1 -> v1.2`) predictable.
 
 ### Recommended workflow (v1.x)
 
@@ -288,13 +288,17 @@ Starting with `v1.0`, **al-folio** ships an upgrade CLI and migration manifests 
 # 1) Update dependencies
 bundle update
 
-# 2) Audit your site for breaking/deprecated patterns
+# 2) Rebuild Tailwind assets (v4.x)
+npm ci
+npm run build:css
+
+# 3) Audit your site for breaking/deprecated patterns
 bundle exec al-folio upgrade audit
 
-# 3) Apply deterministic codemods (optional)
+# 4) Apply deterministic codemods (optional)
 bundle exec al-folio upgrade apply --safe
 
-# 4) Generate a report for manual follow-up
+# 5) Generate a report for manual follow-up
 bundle exec al-folio upgrade report
 ```
 
@@ -308,8 +312,9 @@ The report is written to `al-folio-upgrade-report.md` and classifies findings as
 `v1.0` is Tailwind-first. If your content still relies on Bootstrap-marked classes/behaviors:
 
 1. Enable `al_folio.compat.bootstrap.enabled: true` in `_config.yml`
-2. Complete migration gradually
-3. Disable compatibility mode before `v1.3` (compat is supported through `v1.2`, deprecated in `v1.3`, removed in `v2.0`)
+2. Ensure `al_folio_bootstrap_compat` is in your plugins/dependencies
+3. Complete migration gradually
+4. Disable compatibility mode before `v1.3` (compat is supported through `v1.2`, deprecated in `v1.3`, removed in `v2.0`)
 
 ### Older pre-v1 installs
 

@@ -34,5 +34,15 @@ grep -q '/assets/js/distillpub/overrides.js' "${distill_page}"
 grep -q '/assets/al_charts/js/mermaid-setup.js' "${distill_page}"
 grep -q '/assets/al_math/js/tikzjax.min.js' "${distill_page}"
 grep -q 'id="giscus_thread"' "${distill_page}"
+transforms_runtime="${tmp_site}/assets/js/distillpub/transforms.v2.js"
+if [ ! -f "${transforms_runtime}" ]; then
+  echo "distill transforms runtime missing at ${transforms_runtime}" >&2
+  exit 1
+fi
+
+if grep -q 'https://distill.pub/template.v2.js' "${transforms_runtime}"; then
+  echo "remote Distill template loader should not be referenced in transforms runtime" >&2
+  exit 1
+fi
 
 echo "distill integration checks passed"

@@ -121,7 +121,8 @@ The project is structured as follows, focusing on the main components that you w
 |   └── 📄 404.md: 404 page (page not found)
 ├── 📂 _posts/: contains the blog posts
 ├── 📂 _projects/: contains the projects
-└── 📂 _sass/: contains the SASS files that define the style of the website
+├── 📂 assets/tailwind/: Tailwind CSS source entrypoint (`app.css`) and layering
+└── 📂 _sass/: legacy SASS compatibility bridge (v1.x)
     ├── 📂 font-awesome/: contains the SCSS files for Font Awesome
     ├── 📄 _blog.scss: blog post, tags, and pagination styles
     ├── 📄 _components.scss: reusable component styles (cards, profiles, CV, projects)
@@ -147,6 +148,13 @@ The configuration file [\_config.yml](_config.yml) contains the main configurati
 > Note that the `url` and `baseurl` settings are used to generate the links of the website, as explained in the [install instructions](INSTALL.md).
 
 All changes made to this file are only visible after you rebuild the website. That means that you need to run `bundle exec jekyll serve` again if you are running the website locally or push your changes to GitHub if you are using GitHub Pages. All other changes are visible immediately, you only need to refresh the page.
+
+For style changes in v1.x, run:
+
+```bash
+npm ci
+npm run build:css
+```
 
 If changes don't appear after refreshing, try:
 
