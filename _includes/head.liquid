@@ -19,7 +19,7 @@
 
 {% if site.al_folio.compat.bootstrap.enabled %}
   <!-- Optional Bootstrap compatibility layer -->
-  <link rel="stylesheet" href="{{ '/assets/css/bootstrap-compat.css' | relative_url | bust_file_cache }}">
+  <link rel="stylesheet" href="{{ '/assets/css/bootstrap-compat.css' | relative_url }}">
 {% endif %}
 
 {% if page.pretty_table and site.al_folio.compat.bootstrap.enabled %}
