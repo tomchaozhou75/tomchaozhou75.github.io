@@ -1,9 +1,57 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const childProcess = require('node:child_process');
+const os = require('node:os');
 
 const root = process.cwd();
 
-const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
+let coreRootCache = null;
+const coreRoot = () => {
+  if (coreRootCache !== null) {
+    return coreRootCache;
+  }
+
+  const bundleCommands = ['bundle show al_folio_core', '~/.rbenv/shims/bundle show al_folio_core'];
+  for (const command of bundleCommands) {
+    try {
+      coreRootCache = childProcess.execSync(command, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'], shell: '/bin/bash' }).toString().trim();
+      if (coreRootCache && fs.existsSync(coreRootCache)) {
+        return coreRootCache;
+      }
+    } catch (_error) {
+      // Keep trying fallback commands.
+    }
+  }
+
+  const fallbackGlob = path.join(os.homedir(), '.rbenv/versions/*/lib/ruby/gems/*/bundler/gems/al-folio-core-*');
+  try {
+    const fallback = childProcess.execSync(`ls -d ${fallbackGlob} 2>/dev/null | head -n 1`, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'], shell: '/bin/bash' }).toString().trim();
+    coreRootCache = fallback;
+  } catch (_error) {
+    coreRootCache = '';
+  }
+
+  return coreRootCache;
+};
+
+const resolveThemeFile = (rel) => {
+  const localPath = path.join(root, rel);
+  if (fs.existsSync(localPath)) {
+    return localPath;
+  }
+
+  const gemRoot = coreRoot();
+  if (gemRoot) {
+    const gemPath = path.join(gemRoot, rel);
+    if (fs.existsSync(gemPath)) {
+      return gemPath;
+    }
+  }
+
+  throw new Error(`Unable to resolve theme file: ${rel}`);
+};
+
+const read = (rel) => fs.readFileSync(resolveThemeFile(rel), 'utf8');
 
 const failures = [];
 

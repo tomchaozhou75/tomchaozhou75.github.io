@@ -112,10 +112,9 @@ Note that libraries tend to be deprecated and support for them dropped as they a
 Use the SemVer migration flow:
 
 1. `bundle update`
-2. `npm ci && npm run build:css`
-3. `bundle exec al-folio upgrade audit`
-4. `bundle exec al-folio upgrade apply --safe` (optional)
-5. `bundle exec al-folio upgrade report`
+2. `bundle exec al-folio upgrade audit`
+3. `bundle exec al-folio upgrade apply --safe` (optional)
+4. `bundle exec al-folio upgrade report`
 
 Then resolve all **Blocking** findings in `al-folio-upgrade-report.md`. Non-blocking findings are deprecated patterns you can migrate incrementally.
 

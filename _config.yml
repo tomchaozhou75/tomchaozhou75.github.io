@@ -225,15 +225,12 @@ exclude:
   - lighthouse_results/
   - package.json
   - package-lock.json
-  - postcss.config.js
   - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
   - readme_preview/
-  - assets/tailwind/
   - gems/
   - migrations/
-  - tailwind.config.js
   - vendor
 keep_files:
   - CNAME

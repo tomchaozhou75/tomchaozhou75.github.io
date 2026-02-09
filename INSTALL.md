@@ -288,19 +288,17 @@ Starting with `v1.0`, **al-folio** ships an upgrade CLI (`al_folio_upgrade`) and
 # 1) Update dependencies
 bundle update
 
-# 2) Rebuild Tailwind assets (v4.x)
-npm ci
-npm run build:css
-
-# 3) Audit your site for breaking/deprecated patterns
+# 2) Audit your site for breaking/deprecated patterns
 bundle exec al-folio upgrade audit
 
-# 4) Apply deterministic codemods (optional)
+# 3) Apply deterministic codemods (optional)
 bundle exec al-folio upgrade apply --safe
 
-# 5) Generate a report for manual follow-up
+# 4) Generate a report for manual follow-up
 bundle exec al-folio upgrade report
 ```
+
+`al-folio` starter is intentionally thin in `v1.x`: layouts/includes/core assets are provided by `al_folio_core`, so regular upgrades do not require rebuilding Tailwind in the starter repo.
 
 The report is written to `al-folio-upgrade-report.md` and classifies findings as:
 
