@@ -41,6 +41,8 @@ end
 # Gems for al-folio plugins
 group :al_folio_plugins do
     gem 'al_folio_core', :git => 'https://github.com/al-org-dev/al-folio-core.git', :branch => 'codex/tailwind-v1-upgrade'
+    gem 'al_folio_cv', :git => 'https://github.com/al-org-dev/al-folio-cv.git', :branch => 'codex/tailwind-v1-upgrade'
+    gem 'al_folio_distill', :git => 'https://github.com/al-org-dev/al-folio-distill.git', :branch => 'codex/tailwind-v1-upgrade'
     gem 'al_folio_upgrade', :git => 'https://github.com/al-org-dev/al-folio-upgrade.git', :branch => 'codex/tailwind-v1-upgrade'
     gem 'al_folio_bootstrap_compat', :git => 'https://github.com/al-org-dev/al-folio-bootstrap-compat.git', :branch => 'codex/tailwind-v1-upgrade'
 
@@ -48,7 +50,6 @@ group :al_folio_plugins do
     gem 'al_citations'
     gem 'al_ext_posts'
     gem 'al_img_tools'
-    gem 'al_utils'
     gem 'al_search'
     gem 'al_charts'
     gem 'al_math'

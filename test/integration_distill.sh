@@ -36,8 +36,16 @@ grep -q '/assets/al_math/js/tikzjax.min.js' "${distill_page}"
 grep -q 'id="giscus_thread"' "${distill_page}"
 transforms_runtime="${tmp_site}/assets/js/distillpub/transforms.v2.js"
 if [ ! -f "${transforms_runtime}" ]; then
-  echo "distill transforms runtime missing at ${transforms_runtime}" >&2
-  exit 1
+  distill_runtime="$(PATH="$HOME/.rbenv/shims:$PATH" bundle exec ruby -e 'spec = Gem.loaded_specs["al_folio_distill"]; puts(spec ? File.join(spec.full_gem_path, "assets/js/distillpub/transforms.v2.js") : "")')"
+  core_runtime="$(PATH="$HOME/.rbenv/shims:$PATH" bundle exec ruby -e 'spec = Gem.loaded_specs["al_folio_core"]; puts(spec ? File.join(spec.full_gem_path, "assets/js/distillpub/transforms.v2.js") : "")')"
+  if [ -f "${distill_runtime}" ]; then
+    transforms_runtime="${distill_runtime}"
+  elif [ -f "${core_runtime}" ]; then
+    transforms_runtime="${core_runtime}"
+  else
+    echo "distill transforms runtime missing at ${transforms_runtime} (and not found in installed distill/core gems)" >&2
+    exit 1
+  fi
 fi
 
 if grep -q 'https://distill.pub/template.v2.js' "${transforms_runtime}"; then

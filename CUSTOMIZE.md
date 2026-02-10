@@ -1198,7 +1198,7 @@ You can also:
 - delete [\_includes/bib_search.liquid](_includes/bib_search.liquid)
 - delete [\_includes/citation.liquid](_includes/citation.liquid)
 - delete [\_includes/selected_papers.liquid](_includes/selected_papers.liquid)
-- the old `hide-custom-bibtex.rb` helper is now provided by the `al_utils` plugin (there is no local file to delete)
+- the old `hide-custom-bibtex.rb` helper is now provided by `al_folio_core` (there is no local file to delete)
 - remove `al_citations` from the [Gemfile](Gemfile) and from the `plugins` section in [\_config.yml](_config.yml)
 - remove the `jekyll-scholar` gem from the [Gemfile](Gemfile) and the `plugins` section in [\_config.yml](_config.yml)
 

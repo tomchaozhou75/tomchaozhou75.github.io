@@ -3,13 +3,13 @@ const { preparePage, stabilizeVisuals } = require('./helpers');
 
 test('publications Abs toggle opens and closes', async ({ page }) => {
   await preparePage(page, 'light');
-  await page.goto('/publications/', { waitUntil: 'networkidle' });
+  await page.goto('al-folio/publications/', { waitUntil: 'networkidle' });
   await stabilizeVisuals(page);
 
   const absButton = page.getByRole('button', { name: 'Abs' }).first();
   await expect(absButton).toBeVisible();
 
-  const panel = page.locator('.publications .abstract.hidden').first();
+  const panel = page.locator('.abstract.hidden').first();
   await absButton.click();
   await expect(panel).toHaveClass(/open/);
 
@@ -19,7 +19,7 @@ test('publications Abs toggle opens and closes', async ({ page }) => {
 
 test('publication popover works without bootstrap compat runtime', async ({ page }) => {
   await preparePage(page, 'light');
-  await page.goto('/publications/', { waitUntil: 'networkidle' });
+  await page.goto('al-folio/publications/', { waitUntil: 'networkidle' });
   await stabilizeVisuals(page);
 
   const popoverTrigger = page.locator('[data-toggle="popover"]').first();
@@ -33,7 +33,7 @@ test('mobile navbar can expand/collapse', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile', 'mobile-only navigation behavior');
 
   await preparePage(page, 'light');
-  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.goto('al-folio/', { waitUntil: 'networkidle' });
 
   const toggle = page.locator('.navbar-toggler').first();
   await expect(toggle).toBeVisible();
@@ -44,4 +44,18 @@ test('mobile navbar can expand/collapse', async ({ page }, testInfo) => {
 
   await toggle.click();
   await expect(nav).not.toHaveClass(/show/);
+});
+
+test('repositories page renders external stat cards with deterministic fixtures', async ({ page }) => {
+  await preparePage(page, 'light');
+  await page.goto('al-folio/repositories/', { waitUntil: 'networkidle' });
+  await stabilizeVisuals(page);
+
+  const repoImages = page.locator('img[src*="github-readme-stats"], img[src*="github-profile-trophy"]');
+  await expect(repoImages.first()).toBeVisible();
+
+  const renderedCount = await repoImages.evaluateAll((images) =>
+    images.filter((img) => img.complete && img.naturalWidth > 0).length
+  );
+  expect(renderedCount).toBeGreaterThan(0);
 });

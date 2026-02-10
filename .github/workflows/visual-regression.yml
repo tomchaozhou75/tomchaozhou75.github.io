@@ -72,7 +72,7 @@ jobs:
 
       - name: Run visual parity checks 👀
         env:
-          BASELINE_URL: http://127.0.0.1:4100/al-folio
+          BASELINE_URL: http://127.0.0.1:4100
           NO_WEBSERVER: '1'
         run: |
           set -euo pipefail

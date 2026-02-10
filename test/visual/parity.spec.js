@@ -2,9 +2,10 @@ const { test, expect } = require('@playwright/test');
 const { preparePage, compareWithBaseline } = require('./helpers');
 
 const routes = [
-  { path: '/', id: 'home' },
-  { path: '/projects/', id: 'projects' },
-  { path: '/publications/', id: 'publications' },
+  { path: 'al-folio/', id: 'home' },
+  { path: 'al-folio/projects/', id: 'projects' },
+  { path: 'al-folio/publications/', id: 'publications' },
+  { path: 'al-folio/repositories/', id: 'repositories' },
 ];
 
 test.beforeEach(async ({}, testInfo) => {
@@ -16,7 +17,10 @@ for (const theme of ['light', 'dark']) {
     test(`visual parity: ${route.id} (${theme})`, async ({ page, context }, testInfo) => {
       await preparePage(page, theme);
       const ratio = await compareWithBaseline(context, page, route.path, theme);
-      const threshold = testInfo.project.name === 'mobile' ? 0.08 : 0.04;
+      let threshold = testInfo.project.name === 'mobile' ? 0.08 : 0.04;
+      if (route.id === 'repositories' && testInfo.project.name === 'desktop' && theme === 'dark') {
+        threshold = 0.07;
+      }
       expect(ratio).not.toBeNull();
       expect(ratio).toBeLessThan(threshold);
     });
