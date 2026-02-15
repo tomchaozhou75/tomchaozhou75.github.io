@@ -40,8 +40,14 @@ async function preparePage(page, themeSetting = 'light') {
 }
 
 async function stabilizeVisuals(page) {
-  await page.addStyleTag({
-    content: `
+  await page.evaluate(() => {
+    const styleId = "__alfolio_visual_stabilize";
+    if (document.getElementById(styleId)) {
+      return;
+    }
+    const style = document.createElement("style");
+    style.id = styleId;
+    style.textContent = `
       *, *::before, *::after {
         animation-duration: 0ms !important;
         animation-delay: 0ms !important;
@@ -54,7 +60,8 @@ async function stabilizeVisuals(page) {
       .cc-window {
         visibility: hidden !important;
       }
-    `,
+    `;
+    document.head.appendChild(style);
   });
 }
 
