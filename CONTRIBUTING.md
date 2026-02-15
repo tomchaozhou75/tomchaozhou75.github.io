@@ -19,6 +19,22 @@ Note that since [#2048](https://github.com/alshedivat/al-folio/pull/2048) al-fol
 
 Do not add duplicate component-level correctness tests to this starter when the component is gem-owned. See [`BOUNDARIES.md`](BOUNDARIES.md).
 
+## Local Validation
+
+Before opening/updating a PR in `v1.x`, run:
+
+```bash
+npm ci
+bundle exec jekyll build
+```
+
+If your change touches visual tests, install Playwright browsers once and run:
+
+```bash
+npx playwright install chromium webkit
+npm run test:visual
+```
+
 ## GitHub Copilot Agents
 
 This repository includes specialized GitHub Copilot agents and files to assist with development and documentation:

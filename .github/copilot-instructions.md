@@ -57,6 +57,7 @@ bash test/integration_upgrade_cli.sh
 Visual checks:
 
 ```bash
+npx playwright install chromium webkit
 npm run test:visual
 ```
 
