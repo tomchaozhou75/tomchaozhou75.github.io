@@ -57,7 +57,7 @@ al_folio:
   distill:
     engine: distillpub-template
     source: alshedivat/distillpub-template#al-folio
-    allow_remote_loader: false
+    allow_remote_loader: true
   features:
     cv:
       enabled: true
@@ -273,6 +273,7 @@ plugins:
   - al_folio_distill
   - al_folio_upgrade
   - al_folio_bootstrap_compat
+  - al_cookie
   - al_analytics
   - al_citations
   - al_ext_posts

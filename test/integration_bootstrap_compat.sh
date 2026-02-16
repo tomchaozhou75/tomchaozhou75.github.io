@@ -19,8 +19,8 @@ if grep -q '/assets/css/bootstrap-compat.css' "${index_no_compat}"; then
   echo "unexpected bootstrap compatibility stylesheet in default build" >&2
   exit 1
 fi
-if grep -q 'third_party_libraries.jquery' "${index_no_compat}"; then
-  echo "unexpected jquery runtime reference in default build" >&2
+if grep -qiE '<script[^>]+src=["'"'"'][^"'"'"']*jquery[^"'"'"']*["'"'"']' "${index_no_compat}"; then
+  echo "unexpected jquery runtime script in default build" >&2
   exit 1
 fi
 

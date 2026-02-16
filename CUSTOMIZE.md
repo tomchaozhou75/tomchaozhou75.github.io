@@ -1269,7 +1269,7 @@ In this folder you need to store your file in the same format as you would in `_
 
 ## GDPR Cookie Consent Dialog
 
-**al-folio** includes a built-in GDPR-compliant cookie consent dialog to help you respect visitor privacy and comply with privacy regulations (GDPR, CCPA, etc.). The feature is powered by [Vanilla Cookie Consent](https://cookieconsent.orestbida.com/) and integrates with all analytics providers.
+**al-folio** supports a GDPR-compliant cookie consent dialog via the `al_cookie` plugin to help you respect visitor privacy and comply with privacy regulations (GDPR, CCPA, etc.). The feature is powered by [Vanilla Cookie Consent](https://cookieconsent.orestbida.com/) and integrates with all analytics providers.
 
 ### How it works
 
@@ -1300,7 +1300,14 @@ In this folder you need to store your file in the same format as you would in `_
    enable_cookie_consent: true
    ```
 
-3. Rebuild your site:
+3. Ensure `al_cookie` is enabled in your plugin list:
+
+   ```yaml
+   plugins:
+     - al_cookie
+   ```
+
+4. Rebuild your site:
 
    ```bash
    docker compose down && docker compose up
@@ -1308,20 +1315,18 @@ In this folder you need to store your file in the same format as you would in `_
    bundle exec jekyll serve
    ```
 
-4. The consent dialog will automatically appear on your site's homepage on first visit
+5. The consent dialog will automatically appear on your site's homepage on first visit
 
 ### Customizing the consent dialog
 
-The consent dialog configuration and messages are defined in core include template logic (`al_folio_core/_includes/plugins/al_cookie_consent_setup.liquid`). You can customize by adding a local override include at the same path in your site:
-
-`_includes/plugins/al_cookie_consent_setup.liquid`
+The consent dialog configuration and messages are now owned by `al_cookie` (`lib/templates/cookie_consent_setup.js.liquid` in that gem). To customize behavior, override cookie consent scripts in your site templates or fork/pin `al_cookie` and adjust the template there.
 
 - Dialog titles and button labels
 - Cookie categories and descriptions
 - Contact information links (points to `#contact` by default)
 - Language translations
 
-To modify the dialog, edit the `language.translations.en` section in your local override include. For example, to change the consent dialog title:
+To modify the dialog, edit the `language.translations.en` section in the plugin template. For example, to change the consent dialog title:
 
 ```javascript
 consentModal: {

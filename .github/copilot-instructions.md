@@ -4,7 +4,7 @@
 
 `al-folio` is a **starter kit** for the v1 pluginized architecture.
 
-- Runtime/theme internals are gem-owned (`al_folio_core`, `al_folio_distill`, other `al-*` plugins).
+- Runtime/theme internals are gem-owned (`al_folio_core`, `al_folio_distill`, `al_cookie`, other `al-*` plugins).
 - This repo owns starter wiring, sample content, docs, integration tests, and visual regression tests.
 
 ## Ownership Boundaries
@@ -46,6 +46,7 @@ Common checks for starter changes:
 npm ci
 npm run lint:prettier
 npm run lint:style-contract
+./bin/setup-python-deps
 bundle exec jekyll build
 bash test/integration_comments.sh
 bash test/integration_plugin_toggles.sh

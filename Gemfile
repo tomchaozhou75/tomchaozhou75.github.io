@@ -45,6 +45,7 @@ group :al_folio_plugins do
     gem 'al_folio_distill', :git => 'https://github.com/al-org-dev/al-folio-distill.git', :branch => 'codex/tailwind-v1-upgrade'
     gem 'al_folio_upgrade', :git => 'https://github.com/al-org-dev/al-folio-upgrade.git', :branch => 'codex/tailwind-v1-upgrade'
     gem 'al_folio_bootstrap_compat', :git => 'https://github.com/al-org-dev/al-folio-bootstrap-compat.git', :branch => 'codex/tailwind-v1-upgrade'
+    gem 'al_cookie', :git => 'https://github.com/al-org-dev/al-cookie.git', :branch => 'codex/tailwind-v1-upgrade'
 
     gem 'al_analytics', '>= 0.1.1'
     gem 'al_citations'

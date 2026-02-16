@@ -136,6 +136,28 @@ Use gem repos for:
 
 See [`BOUNDARIES.md`](BOUNDARIES.md) for the ownership contract.
 
+## Jupyter posts are enabled, but my build says `jupyter-nbconvert` is missing. What are my options?
+
+`jekyll-jupyter-notebook` depends on Python tooling (`jupyter` + `nbconvert`), and Bundler cannot install Python packages for you.
+
+Recommended options:
+
+1. Install Python deps locally:
+
+```bash
+./bin/setup-python-deps
+```
+
+2. Or install manually in your Python environment:
+
+```bash
+python3 -m pip install --user --break-system-packages jupyter nbconvert
+```
+
+3. If you do not need notebook rendering, disable/remove the plugin from `_config.yml`.
+
+In `v1.x`, missing `jupyter-nbconvert` is treated as warn-and-continue; notebook rendering is skipped until deps are installed.
+
 ## How do I handle legacy Bootstrap-marked pages on Tailwind-first `v1.x`?
 
 `v1.x` core is Tailwind-first. If your content still relies on Bootstrap-marked classes or `data-toggle` behavior, enable compatibility mode temporarily:

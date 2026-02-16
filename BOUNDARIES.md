@@ -7,6 +7,7 @@
 - `al-folio` (starter): example content, wiring, docs, integration harness.
 - `al_folio_core`: shared layouts/includes/runtime primitives and upgrade contracts.
 - `al_folio_distill`: Distill templates/runtime assets.
+- `al_cookie`: cookie consent runtime assets and consent logic.
 - Other `al-*` gems: feature-specific assets, tags, filters, and runtime behavior.
 
 ## Test ownership

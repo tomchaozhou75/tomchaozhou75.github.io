@@ -4,33 +4,35 @@ on:
   pull_request:
     branches: [main, master, v1.0-dev]
     paths:
-      - '_config.yml'
-      - '_data/**'
-      - '_pages/**'
-      - '_posts/**'
-      - '_projects/**'
-      - 'assets/**'
-      - 'test/visual/**'
-      - '.github/workflows/visual-regression.yml'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'Gemfile'
-      - 'Gemfile.lock'
+      - "_config.yml"
+      - "_data/**"
+      - "_bibliography/**"
+      - "_pages/**"
+      - "_posts/**"
+      - "_projects/**"
+      - "assets/**"
+      - "test/visual/**"
+      - ".github/workflows/visual-regression.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "Gemfile"
+      - "Gemfile.lock"
   push:
     branches: [v1.0-dev]
     paths:
-      - '_config.yml'
-      - '_data/**'
-      - '_pages/**'
-      - '_posts/**'
-      - '_projects/**'
-      - 'assets/**'
-      - 'test/visual/**'
-      - '.github/workflows/visual-regression.yml'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'Gemfile'
-      - 'Gemfile.lock'
+      - "_config.yml"
+      - "_data/**"
+      - "_bibliography/**"
+      - "_pages/**"
+      - "_posts/**"
+      - "_projects/**"
+      - "assets/**"
+      - "test/visual/**"
+      - ".github/workflows/visual-regression.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "Gemfile"
+      - "Gemfile.lock"
 
 jobs:
   visual-regression:
@@ -45,14 +47,14 @@ jobs:
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.5'
+          ruby-version: "3.3.5"
           bundler-cache: true
 
       - name: Setup Node 🧰
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Install JS deps 📦
         run: npm ci
@@ -74,7 +76,7 @@ jobs:
       - name: Run visual parity checks 👀
         env:
           BASELINE_URL: http://127.0.0.1:4100
-          NO_WEBSERVER: '1'
+          NO_WEBSERVER: "1"
         run: |
           set -euo pipefail
           export PATH="$HOME/.local/bin:$PATH"
