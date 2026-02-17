@@ -820,6 +820,8 @@ The template supports icons from:
 - [Font Awesome](https://fontawesome.com/)
 - [Scholar Icons](https://louisfacun.github.io/scholar-icons/)
 
+In `v1.x`, icon runtime ownership is provided by the `al_icons` plugin. Icon files are loaded from pinned CDN URLs via `third_party_libraries` in `_config.yml` (not from starter-local `assets/fonts` or `assets/webfonts` copies).
+
 Social media links will appear at the bottom of the `About` page and in the search results by default. You can customize this behavior in [`_config.yml`](_config.yml):
 
 - `enable_navbar_social: true` – Display social links in the navigation bar
@@ -849,7 +851,7 @@ socials_in_search: true
 - `search_enabled`: Enables the site-wide search feature. When enabled, a search box appears in the navigation bar, allowing users to search across your site content.
 - `socials_in_search`: Includes your social media links and contact information in search results. This makes it easier for visitors to find ways to connect with you.
 
-All these search features work in real-time and do not require a page reload.
+All these search features work in real-time and do not require a page reload. Search runtime assets are owned by the `al_search` plugin.
 
 ## Social media previews
 
@@ -1064,6 +1066,8 @@ third_party_libraries:
 - `version`: Specifies which version of each library to use. Update this to use a newer version.
 - `url`: Template URLs for loading the library. The `{{version}}` placeholder is replaced with the version number automatically.
 - `integrity`: [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) hashes ensure that the library hasn't been tampered with. When updating a library version, you should also update its integrity hash.
+- `v1.x` policy: use pinned CDN assets (with SRI where available) for standalone libraries; keep vendored release-time artifacts only in owning plugins when runtime/module graphs are complex (for example `al_search`, `al_folio_distill`).
+- `v1.x` policy: do not add install-time downloads in `gem install` / `bundle install`.
 
 To update a library:
 
@@ -1077,9 +1081,8 @@ To update a library:
      ```
 
      Replace `[FILE_URL]` with the URL of the library file. Then, prefix the result with `sha384-` and use it in the `integrity` field.
-     For detailed instructions on updating specific libraries, see the FAQ:
-     - [How can I update Academicons version](FAQ.md#how-can-i-update-academicons-version-on-the-template)
-     - [How can I update Font Awesome version](FAQ.md#how-can-i-update-font-awesome-version-on-the-template)
+     For icon-specific updates, see the FAQ:
+     - [How can I update icon library versions on the template](FAQ.md#how-can-i-update-icon-library-versions-on-the-template)
 
 ## Bootstrap compatibility mode (v1.x)
 

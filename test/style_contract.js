@@ -5,6 +5,7 @@ const root = process.cwd();
 
 const read = (relPath) => fs.readFileSync(path.join(root, relPath), "utf8");
 const exists = (relPath) => fs.existsSync(path.join(root, relPath));
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const failures = [];
 
@@ -29,10 +30,34 @@ if (!/^\s*-\s*al_folio_distill\s*$/m.test(config)) {
 if (!/^\s*-\s*al_cookie\s*$/m.test(config)) {
   failures.push("`_config.yml` plugins must include `al_cookie` (cookie consent is plugin-owned).");
 }
+if (!/^\s*-\s*al_icons\s*$/m.test(config)) {
+  failures.push("`_config.yml` plugins must include `al_icons` (icon runtime is plugin-owned).");
+}
 
-for (const forbiddenPath of ["_includes", "_layouts", "_sass", "_scripts", "assets/tailwind", "tailwind.config.js"]) {
+for (const libraryKey of ["fontawesome", "academicons", "scholar-icons"]) {
+  if (!new RegExp(`^\\s{2}${escapeRegExp(libraryKey)}:\\s*$`, "m").test(config)) {
+    failures.push(`\`_config.yml\` must define \`third_party_libraries.${libraryKey}\` for al_icons runtime wiring.`);
+    continue;
+  }
+  if (!new RegExp(`^\\s{2}${escapeRegExp(libraryKey)}:[\\s\\S]*?^\\s{4}integrity:\\s*$[\\s\\S]*?^\\s{6}css:\\s*\"sha`, "m").test(config)) {
+    failures.push(`\`_config.yml\` should define an SRI hash for \`third_party_libraries.${libraryKey}.integrity.css\`.`);
+  }
+}
+
+for (const forbiddenPath of ["_includes", "_layouts", "_sass", "_scripts", "assets/tailwind", "tailwind.config.js", "assets/webfonts"]) {
   if (exists(forbiddenPath)) {
     failures.push(`Starter must not own core component path \`${forbiddenPath}\`; move ownership to the corresponding gem.`);
+  }
+}
+
+for (const forbiddenGlobPath of [
+  "assets/fonts/academicons.woff",
+  "assets/fonts/academicons.ttf",
+  "assets/fonts/scholar-icons.woff",
+  "assets/fonts/scholar-icons.ttf",
+]) {
+  if (exists(forbiddenGlobPath)) {
+    failures.push(`Starter must not own icon runtime artifact \`${forbiddenGlobPath}\`; icon ownership belongs to al_icons.`);
   }
 }
 

@@ -18,8 +18,7 @@ Here are some frequently asked questions. If you have a different question, plea
   - [How do I upgrade from al-folio `v1.0` to `v1.1+` with minimal friction?](#how-do-i-upgrade-from-al-folio-v10-to-v11-with-minimal-friction)
   - [How do I handle legacy Bootstrap-marked pages on Tailwind-first `v1.x`?](#how-do-i-handle-legacy-bootstrap-marked-pages-on-tailwind-first-v1x)
   - [I am trying to deploy my site, but it fails with Could not find gem 'jekyll-diagrams' in locally installed gems. How do I fix that?](#i-am-trying-to-deploy-my-site-but-it-fails-with-could-not-find-gem-jekyll-diagrams-in-locally-installed-gems-how-do-i-fix-that)
-  - [How can I update Academicons version on the template](#how-can-i-update-academicons-version-on-the-template)
-  - [How can I update Font Awesome version on the template](#how-can-i-update-font-awesome-version-on-the-template)
+  - [How can I update icon library versions on the template](#how-can-i-update-icon-library-versions-on-the-template)
   - [What do all these GitHub actions/workflows mean?](#what-do-all-these-github-actionsworkflows-mean)
   - [How can I use Google Search Console ID on the template?](#how-can-i-use-google-search-console-id-on-the-template)
   - [What are Code Wiki and DeepWiki?](#what-are-code-wiki-and-deepwiki)
@@ -181,13 +180,21 @@ The compatibility runtime (`/assets/css/bootstrap-compat.css` and `/assets/js/bo
 
 `jekyll-diagrams` support was dropped in [#1992](https://github.com/alshedivat/al-folio/pull/1992) in favor of using `mermaid.js` directly. Simply [update your code](INSTALL.md#upgrading-from-a-previous-version) to get the latest changes.
 
-## How can I update Academicons version on the template
+## How can I update icon library versions on the template
 
-To update the Academicons version, you need to download the latest release from the [Academicons website](https://jpswalsh.github.io/academicons/). After downloading, extract the zip file and copy the files `academicons.ttf` and `academicons.woff` from the `fonts/` directory to `assets/fonts/` and the file `academicons.min.css` from the `css/` directory to `assets/css/`.
+In `v1.x`, icon runtime ownership is provided by `al_icons`, and icons are loaded from pinned CDN URLs configured in `_config.yml` under `third_party_libraries`.
 
-## How can I update Font Awesome version on the template
+Update flow:
 
-To update the Font Awesome version, you need to download the latest release "for the web" from the [Font Awesome website](https://fontawesome.com/download). After downloading, extract the zip file and copy the `scss/` directory content to `_sass/font-awesome/` and the `webfonts/` content to `assets/webfonts/`.
+1. Confirm `al_icons` is enabled in `plugins`.
+2. Update version values in `_config.yml`:
+   - `third_party_libraries.fontawesome.version`
+   - `third_party_libraries.academicons.version`
+   - `third_party_libraries.scholar-icons.version`
+3. Update corresponding `integrity.css` hashes.
+4. Rebuild your site and verify icon rendering on pages with socials/publications.
+
+Do not copy icon fonts into `assets/fonts/` or `assets/webfonts/` in the starter for `v1.x`; those local runtime assets are no longer starter-owned.
 
 ## What do all these GitHub actions/workflows mean?
 
