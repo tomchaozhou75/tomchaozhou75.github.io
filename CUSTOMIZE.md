@@ -862,6 +862,9 @@ Use front matter on pages/posts:
 ```yaml
 toc:
   sidebar: left # or right
+  collapse: expanded # or auto
+# optional explicit depth override:
+# collapse_depth: 3
 ```
 
 In `v1.x`, sidebar TOC rendering is powered by Tocbot (configured in `_config.yml` under `third_party_libraries.tocbot`).  
@@ -872,6 +875,13 @@ You can override displayed TOC labels per heading with `data-toc-text`:
 
 {:data-toc-text="Customizing"}
 ```
+
+`toc.collapse` behavior:
+
+- `expanded` (default): render the full nested TOC expanded.
+- `auto`: collapse nested branches and expand the active branch as you scroll.
+
+If needed, `toc.collapse_depth` can be used for direct Tocbot-style depth control.
 
 ## Pretty tables in Tailwind mode
 

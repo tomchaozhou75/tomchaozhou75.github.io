@@ -245,10 +245,20 @@ test("toc sidebar renders with tocbot styling and data-toc-text label", async ({
     };
   });
   expect(tocDecor.linkBorderLeftWidth).toBe("0px");
-  expect(tocDecor.listBorders.some((value) => value !== "0px")).toBeTruthy();
+  expect(tocDecor.listBorders.every((value) => value === "0px")).toBeTruthy();
 
   await page.getByRole("heading", { name: "Customizing Your Table of Contents" }).scrollIntoViewIfNeeded();
   await expect.poll(async () => tocSidebar.locator(".toc-link.is-active-link").count()).toBeGreaterThan(0);
+
+  const activeDecor = await tocSidebar.locator(".toc-link.is-active-link").first().evaluate((el) => {
+    const activeStyle = window.getComputedStyle(el);
+    const activeMarkerStyle = window.getComputedStyle(el, "::before");
+    return {
+      activeColor: activeStyle.color,
+      markerColor: activeMarkerStyle.backgroundColor,
+    };
+  });
+  expect(activeDecor.markerColor).toBe(activeDecor.activeColor);
 });
 
 test("tailwind table engine provides search, pagination, and sorting in pretty tables", async ({ page }) => {

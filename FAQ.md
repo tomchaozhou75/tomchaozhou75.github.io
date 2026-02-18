@@ -183,10 +183,12 @@ The compatibility runtime (`/assets/css/bootstrap-compat.css` and `/assets/js/bo
 ```yaml
 toc:
   sidebar: left # or right
+  collapse: expanded # or auto
 ```
 
 Tocbot runtime assets are loaded from pinned CDN entries in `_config.yml` under `third_party_libraries.tocbot`.
 If needed, heading labels can be overridden using `data-toc-text` attributes.
+Use `collapse: auto` to expand nested TOC branches as the active section changes during scrolling.
 
 ## Why does `pretty_table: true` still work when Bootstrap compatibility is disabled?
 
