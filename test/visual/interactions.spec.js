@@ -85,6 +85,31 @@ test("blog pagination uses core Tailwind-native styling contract", async ({ page
   expect(styles.paddingLeft).not.toBe("0px");
 });
 
+test("navbar menu stays right-aligned on desktop pages", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name === "mobile", "desktop-only alignment contract");
+
+  await preparePage(page, "light");
+  await page.goto("/al-folio/", { waitUntil: "networkidle" });
+  await stabilizeVisuals(page);
+
+  const alignment = await page.evaluate(() => {
+    const container = document.querySelector("#navbar .container");
+    const menu = document.querySelector("#navbarNav .navbar-menu-list");
+    if (!container || !menu) {
+      return null;
+    }
+    const containerBox = container.getBoundingClientRect();
+    const menuBox = menu.getBoundingClientRect();
+    return {
+      containerRight: containerBox.right,
+      menuRight: menuBox.right,
+    };
+  });
+
+  expect(alignment).not.toBeNull();
+  expect(Math.abs(alignment.menuRight - alignment.containerRight)).toBeLessThanOrEqual(24);
+});
+
 test("navbar search button opens modal and toggle buttons use pointer cursor", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "navbar search/theme controls are collapsed under mobile menu");
 
@@ -126,6 +151,35 @@ test("related posts are wrapped in a valid list", async ({ page }) => {
   const relatedList = heading.locator("xpath=following::ul[1]");
   await expect(relatedList).toBeVisible();
   await expect(relatedList.locator("li").first()).toBeVisible();
+
+  const relatedLinkWeight = await relatedList
+    .locator("a")
+    .first()
+    .evaluate((el) => Number.parseInt(window.getComputedStyle(el).fontWeight, 10) || 400);
+  expect(relatedLinkWeight).toBeLessThanOrEqual(400);
+});
+
+test("inline code uses compact normal-weight typography", async ({ page }) => {
+  await preparePage(page, "light");
+  await page.goto("/al-folio/blog/2023/sidebar-table-of-contents/", { waitUntil: "networkidle" });
+  await stabilizeVisuals(page);
+
+  const inlineCodeStyle = await page.evaluate(() => {
+    const candidate = Array.from(document.querySelectorAll("main code, [role='main'] code")).find((el) => !el.closest("pre"));
+    if (!candidate) {
+      return null;
+    }
+    const computed = window.getComputedStyle(candidate);
+    const numericWeight = Number.parseInt(computed.fontWeight, 10);
+    return {
+      fontSize: Number.parseFloat(computed.fontSize),
+      fontWeight: Number.isNaN(numericWeight) ? (computed.fontWeight === "bold" ? 700 : 400) : numericWeight,
+    };
+  });
+
+  expect(inlineCodeStyle).not.toBeNull();
+  expect(inlineCodeStyle.fontSize).toBeLessThan(16);
+  expect(inlineCodeStyle.fontWeight).toBeLessThanOrEqual(400);
 });
 
 test("project cards hover with upward lift animation", async ({ page }, testInfo) => {
@@ -179,6 +233,22 @@ test("toc sidebar renders with tocbot styling and data-toc-text label", async ({
   const tocLinks = tocSidebar.locator(".toc-link");
   await expect.poll(async () => tocLinks.count()).toBeGreaterThan(0);
   await expect(tocSidebar.getByText("Customizing")).toHaveCount(1);
+
+  const firstLink = tocLinks.first();
+  await firstLink.hover();
+  const tocDecor = await firstLink.evaluate((el) => {
+    const linkStyle = window.getComputedStyle(el);
+    const beforeStyle = window.getComputedStyle(el, "::before");
+    const listBorders = Array.from(document.querySelectorAll("#toc-sidebar .toc-list")).map((list) => window.getComputedStyle(list).borderLeftWidth);
+    return {
+      linkBorderLeftWidth: linkStyle.borderLeftWidth,
+      beforeWidth: Number.parseFloat(beforeStyle.width),
+      listBorders,
+    };
+  });
+  expect(tocDecor.linkBorderLeftWidth).toBe("0px");
+  expect(tocDecor.beforeWidth).toBeGreaterThanOrEqual(1.5);
+  expect(tocDecor.listBorders.every((value) => value === "0px")).toBeTruthy();
 
   await page.getByRole("heading", { name: "Customizing Your Table of Contents" }).scrollIntoViewIfNeeded();
   await expect.poll(async () => tocSidebar.locator(".toc-link.is-active-link").count()).toBeGreaterThan(0);
