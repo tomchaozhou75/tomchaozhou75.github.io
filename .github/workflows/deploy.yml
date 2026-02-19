@@ -7,8 +7,6 @@ on:
       - main
     paths:
       - "assets/**"
-      - "_sass/**"
-      - "_scripts/**"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -36,8 +34,6 @@ on:
       - main
     paths:
       - "assets/**"
-      - "_sass/**"
-      - "_scripts/**"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -81,6 +77,13 @@ jobs:
         with:
           python-version: "3.13"
           cache: "pip" # caching pip dependencies
+      - name: Setup Node 🧰
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - name: Install JS deps 📦
+        run: npm ci
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@main
         with:

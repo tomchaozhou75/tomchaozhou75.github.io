@@ -8,10 +8,16 @@ on:
       - v1.0-dev
     paths:
       - "Gemfile"
+      - "Gemfile.lock"
       - "_config.yml"
-      - "_includes/**"
-      - "_layouts/**"
+      - "_data/**"
+      - "_pages/**"
+      - "_posts/**"
+      - "_projects/**"
+      - "assets/**"
       - "test/**"
+      - "package.json"
+      - "package-lock.json"
       - ".github/workflows/unit-tests.yml"
   pull_request:
     branches:
@@ -20,10 +26,16 @@ on:
       - v1.0-dev
     paths:
       - "Gemfile"
+      - "Gemfile.lock"
       - "_config.yml"
-      - "_includes/**"
-      - "_layouts/**"
+      - "_data/**"
+      - "_pages/**"
+      - "_posts/**"
+      - "_projects/**"
+      - "assets/**"
       - "test/**"
+      - "package.json"
+      - "package-lock.json"
       - ".github/workflows/unit-tests.yml"
 
 jobs:
@@ -45,6 +57,18 @@ jobs:
           python-version: "3.13"
           cache: "pip"
 
+      - name: Setup Node 🧰
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install JS deps 📦
+        run: npm ci
+
+      - name: Run style contract lint 🧷
+        run: npm run lint:style-contract
+
       - name: Install build prerequisites 🔧
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
@@ -58,3 +82,9 @@ jobs:
 
       - name: Run distill integration test 📄
         run: bash test/integration_distill.sh
+
+      - name: Run bootstrap compatibility integration test 🧩
+        run: bash test/integration_bootstrap_compat.sh
+
+      - name: Run upgrade CLI integration test ⬆️
+        run: bash test/integration_upgrade_cli.sh

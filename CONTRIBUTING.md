@@ -10,6 +10,31 @@ If you would like to implement a new feature or a bug, please make sure you (or 
 
 Note that since [#2048](https://github.com/alshedivat/al-folio/pull/2048) al-folio uses the [prettier formatter](https://prettier.io/) for its code, meaning all new submitted code must conform to its standard. If you don't have `prettier` installed for your setup and the `prettier` code check fails when submitting a PR, you can check the referred failed action in our repo. In that action there will be an artifact with an HTML diff showing the needed changes.
 
+## Test Ownership
+
+`al-folio` is a starter kit in `v1.x`. Keep tests aligned with runtime ownership:
+
+- `al-folio`: visual regression + cross-gem integration + starter wiring contracts.
+- Gem repos (`al-folio-core`, `al-folio-distill`, `al-*`): component correctness/unit tests and asset/runtime contract checks.
+
+Do not add duplicate component-level correctness tests to this starter when the component is gem-owned. See [`BOUNDARIES.md`](BOUNDARIES.md).
+
+## Local Validation
+
+Before opening/updating a PR in `v1.x`, run:
+
+```bash
+npm ci
+bundle exec jekyll build
+```
+
+If your change touches visual tests, install Playwright browsers once and run:
+
+```bash
+npx playwright install chromium webkit
+npm run test:visual
+```
+
 ## GitHub Copilot Agents
 
 This repository includes specialized GitHub Copilot agents and files to assist with development and documentation:
@@ -53,7 +78,7 @@ To enhance GitHub Copilot's effectiveness when working with specific file types,
 - **`.github/instructions/yaml-configuration.instructions.md`** – Guidance for configuration and data files (`_config.yml`, `_data/**/*.yml`)
 - **`.github/instructions/bibtex-bibliography.instructions.md`** – Guidance for bibliography files (`.bib`, `_bibliography/**`)
 - **`.github/instructions/markdown-content.instructions.md`** – Guidance for content files across collections (`_books/`, `_news/`, `_pages/`, `_posts/`, `_projects/`, `_teachings/`)
-- **`.github/instructions/javascript-scripts.instructions.md`** – Guidance for JavaScript files in `_scripts/`
+- **`.github/instructions/javascript-scripts.instructions.md`** – Guidance for starter JavaScript and runtime script snippets
 
 These files help Copilot agents understand project conventions, build requirements, and development workflows without requiring codebase exploration.
 

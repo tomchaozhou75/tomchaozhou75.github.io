@@ -40,14 +40,21 @@ end
 
 # Gems for al-folio plugins
 group :al_folio_plugins do
-    gem 'al_analytics', '>= 0.1.1'
-    gem 'al_citations'
-    gem 'al_ext_posts'
-    gem 'al_img_tools'
-    gem 'al_utils'
-    gem 'al_search'
-    gem 'al_charts'
-    gem 'al_math'
-    gem 'al_comments', '>= 0.1.2'
-    gem 'al_newsletter'
+    gem 'al_folio_core', '= 1.0.7'
+    gem 'al_icons', '= 1.0.0'
+    gem 'al_folio_cv', '= 1.0.0'
+    gem 'al_folio_distill', '= 1.0.1'
+    gem 'al_folio_upgrade', '= 1.0.1'
+    gem 'al_folio_bootstrap_compat', '= 1.0.0'
+    gem 'al_cookie', '= 1.0.0'
+
+    gem 'al_analytics', '= 1.0.0'
+    gem 'al_citations', '= 1.0.0'
+    gem 'al_ext_posts', '= 1.0.0'
+    gem 'al_img_tools', '= 1.0.2'
+    gem 'al_search', '= 1.0.2'
+    gem 'al_charts', '= 1.0.0'
+    gem 'al_math', '= 1.0.1'
+    gem 'al_comments', '= 1.0.0'
+    gem 'al_newsletter', '= 1.0.0'
 end
