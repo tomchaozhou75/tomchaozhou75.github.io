@@ -40,12 +40,12 @@ Third-party non-`al-*` plugins are also eligible for featuring.
   <tbody>
     {% for plugin in bundled_plugins %}
       <tr>
-        <td><a href="{{ plugin.repo_url }}" target="_blank" rel="noopener noreferrer">{{ plugin.name }}</a></td>
+        <td>{{ plugin.name }}<br><small><code>{{ plugin.repo_url }}</code></small></td>
         <td><code>{{ plugin.gem_name }}</code></td>
         <td><code>{{ plugin.jekyll_plugin_id }}</code></td>
         <td><code>{{ plugin.compat.al_folio_min }}</code> - <code>{{ plugin.compat.al_folio_max }}</code></td>
         <td>{{ plugin.owner }}</td>
-        <td><a href="{{ plugin.demo_path | relative_url }}">{{ plugin.demo_path }}</a></td>
+        <td><code>{{ plugin.demo_path }}</code></td>
         <td>{{ plugin.notes }}</td>
       </tr>
     {% endfor %}
@@ -75,12 +75,12 @@ Open a **Plugin Feature Proposal** issue if you want your plugin considered.
   <tbody>
     {% for plugin in featured_only_plugins %}
       <tr>
-        <td><a href="{{ plugin.repo_url }}" target="_blank" rel="noopener noreferrer">{{ plugin.name }}</a></td>
+        <td>{{ plugin.name }}<br><small><code>{{ plugin.repo_url }}</code></small></td>
         <td><code>{{ plugin.gem_name }}</code></td>
         <td><code>{{ plugin.jekyll_plugin_id }}</code></td>
         <td><code>{{ plugin.compat.al_folio_min }}</code> - <code>{{ plugin.compat.al_folio_max }}</code></td>
         <td>{{ plugin.owner }}</td>
-        <td><a href="{{ plugin.demo_path | relative_url }}">{{ plugin.demo_path }}</a></td>
+        <td><code>{{ plugin.demo_path }}</code></td>
         <td>{{ plugin.notes }}</td>
       </tr>
     {% endfor %}
