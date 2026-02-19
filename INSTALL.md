@@ -155,6 +155,13 @@ bundle exec jekyll serve
 In `v1.x`, `al-folio` is a thin starter. Do not run starter-local npm build commands for theme/runtime assets; those are owned by `al-*` gems and loaded through plugin contracts.
 Interactive TOC (`toc.sidebar`) and TikZ (`tikzjax: true`) use pinned CDN runtime assets from `_config.yml` (`third_party_libraries.tocbot` and `third_party_libraries.tikzjax`), not install-time downloads.
 
+Starter plugin wiring lives in:
+
+- [Gemfile](Gemfile) for dependency declarations
+- [\_config.yml](_config.yml) for Jekyll plugin activation/config
+
+`al-folio` starter does not currently use a gemspec; contributor/plugin integration docs should reference the two files above.
+
 If `jekyll-jupyter-notebook` is enabled and `jupyter-nbconvert` is missing, builds continue but notebook rendering is skipped with a warning.
 
 To see the template running, open your browser and go to `http://localhost:4000`. You should see a copy of the theme's [demo website](https://alshedivat.github.io/al-folio/). Now, feel free to customize the theme however you like. After you are done, remember to **commit** your final changes.

@@ -250,14 +250,17 @@ test("toc sidebar renders with tocbot styling and data-toc-text label", async ({
   await page.getByRole("heading", { name: "Customizing Your Table of Contents" }).scrollIntoViewIfNeeded();
   await expect.poll(async () => tocSidebar.locator(".toc-link.is-active-link").count()).toBeGreaterThan(0);
 
-  const activeDecor = await tocSidebar.locator(".toc-link.is-active-link").first().evaluate((el) => {
-    const activeStyle = window.getComputedStyle(el);
-    const activeMarkerStyle = window.getComputedStyle(el, "::before");
-    return {
-      activeColor: activeStyle.color,
-      markerColor: activeMarkerStyle.backgroundColor,
-    };
-  });
+  const activeDecor = await tocSidebar
+    .locator(".toc-link.is-active-link")
+    .first()
+    .evaluate((el) => {
+      const activeStyle = window.getComputedStyle(el);
+      const activeMarkerStyle = window.getComputedStyle(el, "::before");
+      return {
+        activeColor: activeStyle.color,
+        markerColor: activeMarkerStyle.backgroundColor,
+      };
+    });
   expect(activeDecor.markerColor).toBe(activeDecor.activeColor);
 });
 

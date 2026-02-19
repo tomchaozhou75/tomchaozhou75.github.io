@@ -266,7 +266,7 @@ docker compose run --rm web jekyll build 2>&1 | grep -i bibtex
 1. **Correct path format:**
 
    ```markdown
-   ![Alt text](assets/img/image-name.jpg)
+   ![Alt text](assets/img/1.jpg)
    ```
 
 2. **Check the file exists:**

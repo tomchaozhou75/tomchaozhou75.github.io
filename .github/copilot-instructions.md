@@ -22,6 +22,14 @@ Follow [`BOUNDARIES.md`](../BOUNDARIES.md) strictly.
 
 Do not reintroduce gem-owned component runtime files into this starter unless intentionally overriding behavior.
 
+### Plugin naming and featuring
+
+- Theme-coupled plugins use `al-folio-<feature>` repos and `al_folio_<feature>` gem/plugin ids.
+- Reusable plugins may use `al-<feature>` or neutral naming.
+- Plugin catalog metadata lives in `_data/featured_plugins.yml`.
+- Featuring a plugin does not imply bundling by default.
+- Bundling requires explicit starter wiring updates in `Gemfile` and `_config.yml`.
+
 ## Core Stack
 
 - Jekyll (Ruby)
@@ -31,6 +39,7 @@ Do not reintroduce gem-owned component runtime files into this starter unless in
 ## Starter Layout (high-signal paths)
 
 - `_config.yml` - starter wiring, plugin list, feature flags
+- `_data/featured_plugins.yml` - featured/bundled plugin catalog metadata
 - `_data/`, `_pages/`, `_posts/`, `_projects/`, `_news/` - starter content
 - `assets/` - starter-owned content assets
 - `test/visual/` - visual parity suite (Playwright)

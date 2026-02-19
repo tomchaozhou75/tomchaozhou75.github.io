@@ -19,6 +19,9 @@ Here are some frequently asked questions. If you have a different question, plea
   - [How do I handle legacy Bootstrap-marked pages on Tailwind-first `v1.x`?](#how-do-i-handle-legacy-bootstrap-marked-pages-on-tailwind-first-v1x)
   - [I am trying to deploy my site, but it fails with Could not find gem 'jekyll-diagrams' in locally installed gems. How do I fix that?](#i-am-trying-to-deploy-my-site-but-it-fails-with-could-not-find-gem-jekyll-diagrams-in-locally-installed-gems-how-do-i-fix-that)
   - [How can I update icon library versions on the template](#how-can-i-update-icon-library-versions-on-the-template)
+  - [How should I name plugins in `v1.x`?](#how-should-i-name-plugins-in-v1x)
+  - [How can I propose featuring my plugin in `al-folio`?](#how-can-i-propose-featuring-my-plugin-in-al-folio)
+  - [Why does plugin integration use `Gemfile` + `_config.yml` instead of a gemspec?](#why-does-plugin-integration-use-gemfile--_configyml-instead-of-a-gemspec)
   - [What do all these GitHub actions/workflows mean?](#what-do-all-these-github-actionsworkflows-mean)
   - [How can I use Google Search Console ID on the template?](#how-can-i-use-google-search-console-id-on-the-template)
   - [What are Code Wiki and DeepWiki?](#what-are-code-wiki-and-deepwiki)
@@ -221,6 +224,41 @@ Update flow:
 4. Rebuild your site and verify icon rendering on pages with socials/publications.
 
 Do not copy icon fonts into `assets/fonts/` or `assets/webfonts/` in the starter for `v1.x`; those local runtime assets are no longer starter-owned.
+
+## How should I name plugins in `v1.x`?
+
+Use the hybrid naming model:
+
+- Theme-coupled plugins:
+  - repo: `al-folio-<feature>`
+  - gem/plugin id: `al_folio_<feature>`
+- Reusable plugins:
+  - repo: `al-<feature>` or neutral name
+  - gem/plugin id aligned with plugin namespace
+
+Third-party non-`al-*` plugins are still valid and can be featured.
+
+## How can I propose featuring my plugin in `al-folio`?
+
+Use the **Plugin Feature Proposal** issue template in this repo and include:
+
+1. plugin repo URL
+2. gem name and Jekyll plugin id
+3. compatibility range (`al_folio_min` / `al_folio_max`)
+4. owner/maintainer contact
+5. demo page/post path
+
+If maintainers decide to list it, update [`_data/featured_plugins.yml`](_data/featured_plugins.yml) through a PR.
+If maintainers decide to bundle it by default, that is a separate decision and requires wiring updates in [Gemfile](Gemfile) and [\_config.yml](_config.yml).
+
+## Why does plugin integration use `Gemfile` + `_config.yml` instead of a gemspec?
+
+`al-folio` starter currently does not have a gemspec. Plugin integration is controlled by:
+
+- [Gemfile](Gemfile) for dependency declarations
+- [\_config.yml](_config.yml) for Jekyll plugin activation/configuration
+
+Any contribution guidance that references gemspec updates should be interpreted as starter wiring updates to those two files.
 
 ## What do all these GitHub actions/workflows mean?
 

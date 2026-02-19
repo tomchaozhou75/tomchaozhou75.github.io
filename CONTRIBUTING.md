@@ -10,6 +10,42 @@ If you would like to implement a new feature or a bug, please make sure you (or 
 
 Note that since [#2048](https://github.com/alshedivat/al-folio/pull/2048) al-folio uses the [prettier formatter](https://prettier.io/) for its code, meaning all new submitted code must conform to its standard. If you don't have `prettier` installed for your setup and the `prettier` code check fails when submitting a PR, you can check the referred failed action in our repo. In that action there will be an artifact with an HTML diff showing the needed changes.
 
+## Repository Routing (v1.x)
+
+`al-folio` is a starter in `v1.x`. Before opening a PR, route your change to the owning repo:
+
+- `al-folio` (this repo): starter wiring (`Gemfile`, `_config.yml`), example/demo content, documentation, visual tests, cross-gem integration tests.
+- `al-folio-core` and other `al-*` gem repos: component runtime behavior, layouts/includes/style primitives, feature logic, unit/component tests.
+- If a feature does not fit an existing plugin, propose a new standalone plugin first, then implement there.
+
+See [`BOUNDARIES.md`](BOUNDARIES.md) for ownership details.
+
+## Plugin Naming Convention (v1.x)
+
+We use a hybrid naming convention:
+
+- Theme-coupled plugins: repo `al-folio-<feature>`, gem/plugin id `al_folio_<feature>`.
+- Reusable plugins: repo `al-<feature>` or neutral name, gem/plugin id aligned with plugin namespace.
+- Third-party non-`al-*` plugins are allowed in the ecosystem and can be featured.
+
+## Featuring Community Plugins
+
+You can publish and own your own plugin, then propose it for featuring in `al-folio`.
+
+1. Open a **Plugin Feature Proposal** issue in this repo.
+2. Share plugin metadata (repo URL, gem name, plugin id, compatibility, owner, demo path).
+3. Open a PR to this starter updating:
+   - [`_data/featured_plugins.yml`](_data/featured_plugins.yml)
+   - optional demo content page/post under `_pages/` or `_posts/`
+4. If requesting **bundled** status (not only featured listing), include starter wiring updates in:
+   - [Gemfile](Gemfile)
+   - [\_config.yml](_config.yml)
+
+Featuring and bundling are separate decisions:
+
+- **Featured-only**: catalog/docs entry and demo.
+- **Bundled**: also included in starter dependencies/plugin list by maintainers.
+
 ## Test Ownership
 
 `al-folio` is a starter kit in `v1.x`. Keep tests aligned with runtime ownership:
