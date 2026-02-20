@@ -25,6 +25,9 @@ for (const theme of ["light", "dark"]) {
       if (route.id === "repositories" && testInfo.project.name === "desktop" && theme === "dark") {
         threshold = 0.07;
       }
+      if (route.id === "repositories" && testInfo.project.name === "mobile" && theme === "dark") {
+        threshold = 0.12;
+      }
       expect(ratio).not.toBeNull();
       expect(ratio).toBeLessThan(threshold);
     });

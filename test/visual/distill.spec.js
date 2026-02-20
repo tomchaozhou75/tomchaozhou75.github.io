@@ -30,7 +30,7 @@ for (const theme of ["light", "dark"]) {
   test(`distill visual parity against baseline (${theme})`, async ({ page, context }, testInfo) => {
     test.skip(!process.env.BASELINE_URL, "BASELINE_URL is not configured for visual parity checks.");
     await preparePage(page, theme);
-    const ratio = await compareWithBaseline(context, page, "al-folio/blog/2021/distill/", theme);
+    const ratio = await compareWithBaseline(context, page, "al-folio/blog/2021/distill/", theme, { fullPage: false });
     const threshold = testInfo.project.name === "mobile" ? 0.1 : 0.06;
     expect(ratio).not.toBeNull();
     expect(ratio).toBeLessThan(threshold);

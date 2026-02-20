@@ -90,7 +90,43 @@ function diffRatio(actualPng, baselinePng) {
   return changed / (width * height);
 }
 
-async function compareWithBaseline(context, currentPage, route, themeSetting) {
+async function compareWithBaseline(context, currentPage, route, themeSetting, options = {}) {
+  const fullPage = options.fullPage !== false;
+
+  const captureParityScreenshot = async (page) => {
+    if (!fullPage) {
+      return page.screenshot({ fullPage: false });
+    }
+
+    const maxScreenshotDimension = 32760;
+    const dimensions = await page.evaluate(() => {
+      const doc = document.documentElement;
+      const body = document.body || { scrollWidth: 0, scrollHeight: 0 };
+      return {
+        width: Math.max(doc.scrollWidth, body.scrollWidth, doc.clientWidth),
+        height: Math.max(doc.scrollHeight, body.scrollHeight, doc.clientHeight),
+      };
+    });
+
+    if (dimensions.width <= maxScreenshotDimension && dimensions.height <= maxScreenshotDimension) {
+      return page.screenshot({ fullPage: true });
+    }
+
+    const viewport = page.viewportSize() || { width: 1280, height: 720 };
+    const clipWidth = Math.max(1, Math.min(Math.max(viewport.width, dimensions.width), maxScreenshotDimension));
+    const clipHeight = Math.max(1, Math.min(Math.max(viewport.height, dimensions.height), maxScreenshotDimension));
+
+    return page.screenshot({
+      fullPage: false,
+      clip: {
+        x: 0,
+        y: 0,
+        width: clipWidth,
+        height: clipHeight,
+      },
+    });
+  };
+
   const baselineURL = process.env.BASELINE_URL;
   if (!baselineURL) {
     return null;
@@ -104,12 +140,12 @@ async function compareWithBaseline(context, currentPage, route, themeSetting) {
   await baselinePage.goto(baselineTarget, { waitUntil: "networkidle" });
   await stabilizeVisuals(baselinePage);
   await baselinePage.waitForTimeout(500);
-  const baselineBuffer = await baselinePage.screenshot({ fullPage: true });
+  const baselineBuffer = await captureParityScreenshot(baselinePage);
 
   await currentPage.goto(normalizedRoute, { waitUntil: "networkidle" });
   await stabilizeVisuals(currentPage);
   await currentPage.waitForTimeout(500);
-  const currentBuffer = await currentPage.screenshot({ fullPage: true });
+  const currentBuffer = await captureParityScreenshot(currentPage);
 
   await baselinePage.close();
 
