@@ -1,101 +1,83 @@
-# Copilot Coding Agent Instructions
+# Copilot Coding Agent Instructions (v1.x)
 
 ## Repository Role
 
-`al-folio` is a **starter kit** for the v1 pluginized architecture.
+`al-folio` is a **thin starter** for the pluginized architecture.
 
-- Runtime/theme internals are gem-owned (`al_folio_core`, `al_folio_distill`, `al_cookie`, other `al-*` plugins).
-- This repo owns starter wiring, sample content, docs, integration tests, and visual regression tests.
+This repo owns starter configuration, docs, sample content, integration tests, and visual parity checks.
 
 ## Ownership Boundaries
 
-Follow [`BOUNDARIES.md`](../BOUNDARIES.md) strictly.
+Follow `BOUNDARIES.md`.
 
-- Starter (`al-folio`):
-  - integration tests
-  - visual regression tests
-  - docs and starter config
-- Gem repos:
-  - component/unit correctness tests
-  - runtime asset packaging/contract tests
-  - feature-specific logic
+- Starter (`al-folio`) owns:
+  - `Gemfile`, `_config.yml`
+  - starter content (`_pages`, `_posts`, `_projects`, `_news`, `_data`)
+  - docs
+  - integration tests (`test/integration_*.sh`)
+  - visual tests (`test/visual/*`)
+- Plugin repos own:
+  - runtime/component logic
+  - component correctness/unit tests
+  - feature-specific assets
 
-Do not reintroduce gem-owned component runtime files into this starter unless intentionally overriding behavior.
+Do not reintroduce plugin-owned runtime assets into starter paths unless intentionally overriding behavior.
 
-### Plugin naming and featuring
+## Plugin Naming and Featuring
 
-- Theme-coupled plugins use `al-folio-<feature>` repos and `al_folio_<feature>` gem/plugin ids.
-- Reusable plugins may use `al-<feature>` or neutral naming.
-- Plugin catalog metadata lives in `_data/featured_plugins.yml`.
-- Featuring a plugin does not imply bundling by default.
-- Bundling requires explicit starter wiring updates in `Gemfile` and `_config.yml`.
+- Theme-coupled plugins: repo `al-folio-<feature>`, gem/plugin id `al_folio_<feature>`.
+- Reusable plugins: repo `al-<feature>` (or neutral), gem/plugin id aligned to namespace.
+- Featured plugin metadata lives in `_data/featured_plugins.yml`.
+- Featuring and bundling are separate decisions.
 
 ## Core Stack
 
 - Jekyll (Ruby)
-- Node only for tooling (`prettier`, Playwright test runtime)
-- No starter-local Tailwind build pipeline in v1
+- Node tooling only (Prettier, Playwright)
+- No starter-local Tailwind build pipeline
 
-## Starter Layout (high-signal paths)
+## High-Signal Paths
 
-- `_config.yml` - starter wiring, plugin list, feature flags
-- `_data/featured_plugins.yml` - featured/bundled plugin catalog metadata
-- `_data/`, `_pages/`, `_posts/`, `_projects/`, `_news/` - starter content
-- `assets/` - starter-owned content assets
-- `test/visual/` - visual parity suite (Playwright)
-- `test/integration_*.sh` - cross-gem integration checks
-- `test/style_contract.js` - starter contract checks only
-- `.github/workflows/` - CI for starter integration and visual checks
+- `_config.yml` - starter plugin wiring and feature flags
+- `_data/featured_plugins.yml` - plugin catalog metadata
+- `test/style_contract.js` - starter contract checks
+- `test/integration_*.sh` - cross-plugin integration checks
+- `test/visual/` - visual parity checks
+- `.github/workflows/` - CI workflows
 
-## Local Validation
-
-Common checks for starter changes:
+## Validated Commands
 
 ```bash
 npm ci
 npm run lint:prettier
 npm run lint:style-contract
-./bin/setup-python-deps
-bundle exec jekyll build
+bundle exec jekyll build --baseurl /al-folio
 bash test/integration_comments.sh
 bash test/integration_plugin_toggles.sh
 bash test/integration_distill.sh
 bash test/integration_bootstrap_compat.sh
 bash test/integration_upgrade_cli.sh
-```
-
-Visual checks:
-
-```bash
 npx playwright install chromium webkit
 npm run test:visual
+bundle exec al-folio upgrade audit
+bundle exec al-folio upgrade report
+docker compose up -d
+curl -fsS http://127.0.0.1:8080/al-folio/ >/dev/null
+docker compose logs --tail=80
+docker compose down
 ```
 
 ## CI Expectations
 
-When editing starter behavior, keep these workflows aligned:
+Keep these workflows aligned when changing starter behavior:
 
-- `unit-tests.yml` (integration + starter contract lint)
-- `visual-regression.yml` (visual parity)
-- `upgrade-check.yml` (upgrade audit contract)
-- `deploy.yml` (starter deploy build)
-
-Do not add no-op npm build scripts back into `package.json`.
-
-## Upgrade and Migration
-
-Use upgrade CLI for migration checks:
-
-```bash
-bundle exec al-folio upgrade audit
-bundle exec al-folio upgrade apply --safe
-bundle exec al-folio upgrade report
-```
-
-Generated report path: `al-folio-upgrade-report.md`.
+- `unit-tests.yml`
+- `visual-regression.yml`
+- `upgrade-check.yml`
+- `deploy.yml`
 
 ## Editing Guidance
 
-- Prefer starter wiring/config/content changes in this repo.
-- For runtime/layout/style/pipeline fixes, route to the owning gem repo.
-- Keep docs consistent with thin-starter architecture.
+- Prefer starter wiring/docs/content changes in this repo.
+- Route runtime/layout/feature fixes to owning plugin repos.
+- Keep all contributor guidance consistent with v1 ownership boundaries.
