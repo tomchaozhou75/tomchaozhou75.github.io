@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Affiliations: <a href='https://www.tencent.com/en-us/'>Tencent</a>
+subtitle: Affiliations, <a href='https://www.tencent.com/en-us/'>Tencent</a>
 #subtitle: Google Scholar: <a href='https://scholar.google.com/citations?user=U2WBVlkAAAAJ&hl=en'>Google Scholar</a>
 
 profile:
