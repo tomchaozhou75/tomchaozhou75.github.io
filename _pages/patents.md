@@ -7,55 +7,217 @@ nav: true
 nav_order: 4
 ---
 
-I currently hold 65 patents in the United States and China, primarily focusing on artificial intelligence, large-scale recommendation systems, and machine learning technologies. The selected patents below are sorted by grant or filing year (newest first).
+I currently hold patents in the United States, China, and WIPO, primarily focusing on artificial intelligence, large-scale recommendation systems, and machine learning technologies. The patents below are sorted by grant or publication date (newest first).
+2023
+•	News interaction method, apparatus, device, and computer storage medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN109815482B (China)
+o	Status: Granted
+o	Grant Date: 2023-05-23
+ 
+2022
+•	Natural language parsing method, apparatus, server, and storage medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN108959257B (China)
+o	Status: Granted
+o	Grant Date: 2022-11-22
+•	News interaction method, apparatus, device and computer storage medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: US11397852B2 (US)
+o	Status: Granted
+o	Grant Date: 2022-07-26
+•	Artificial intelligence-based information processing method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN107832720B (China)
+o	Status: Granted
+o	Grant Date: 2022-07-08
+•	Emotion recognition method, apparatus, computer device, and storage medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN109003624B (China)
+o	Status: Granted
+o	Grant Date: 2022-02-15
+ 
+2021
+•	Artificial intelligence-based search method, apparatus, device, and computer-readable storage medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN107480162B (China)
+o	Status: Granted
+o	Grant Date: 2021-09-21
+•	Information recommendation method, apparatus, device, and medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN108920649B (China)
+o	Status: Granted
+o	Grant Date: 2021-09-17
+•	Method, apparatus and system for remote control of intelligent device
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: US11108761B2 (US)
+o	Status: Granted
+o	Grant Date: 2021-08-31
+•	Dialogue processing method, apparatus, device, and medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN109002510B (China)
+o	Status: Granted
+o	Grant Date: 2021-08-13
+•	Artificial intelligence-based method and apparatus for pushing music
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN107526809B (China)
+o	Status: Granted
+o	Grant Date: 2021-05-25
+•	Emotion recognition method, apparatus, computer device, and storage medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN108922564B (China)
+o	Status: Granted
+o	Grant Date: 2021-05-07
+•	Artificial intelligence-based human-computer interaction method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN107656996B (China)
+o	Status: Granted
+o	Grant Date: 2021-05-07
+•	Emotion recognition method, apparatus, device, and storage medium
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN108985358B (China)
+o	Status: Granted
+o	Grant Date: 2021-03-02
+•	Human-machine interaction method and apparatus based on artificial intelligence
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: US10923120B2 (US)
+o	Status: Granted
+o	Grant Date: 2021-02-16
+ 
+2020
+•	Emotion recognition method, apparatus, server, and storage medium for voice session
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN108962255B (China)
+o	Status: Granted
+o	Grant Date: 2020-12-08
+•	Artificial intelligence-based information providing method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN106649780B (China)
+o	Status: Granted
+o	Grant Date: 2020-11-24
+•	Method and apparatus for processing information
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN107391750B (China)
+o	Status: Granted
+o	Grant Date: 2020-09-25
+•	Method, apparatus, and device for acquiring information
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN107463700B (China)
+o	Status: Granted
+o	Grant Date: 2020-09-08
+•	Artificial intelligence based method and apparatus for classifying voice-recognized text
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: US10762901B2 (US)
+o	Status: Granted
+o	Grant Date: 2020-09-01
+•	Method and apparatus for providing information based on artificial intelligence
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: US10733197B2 (US)
+o	Status: Granted
+o	Grant Date: 2020-08-04
+•	Method, apparatus, and system for remote control of smart devices
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN107370668B (China)
+o	Status: Granted
+o	Grant Date: 2020-04-28
+ 
+2019
+•	Recommendation method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN105808642B (China)
+o	Status: Granted
+o	Grant Date: 2019-12-24
+•	Artificial intelligence-based search method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN106484766B (China)
+o	Status: Granted
+o	Grant Date: 2019-10-22
+•	Artificial intelligence-based human-computer interaction method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN106383875B (China)
+o	Status: Granted
+o	Grant Date: 2019-10-15
+•	Artificial intelligence-based method and apparatus for pushing information
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN106326486B (China)
+o	Status: Granted
+o	Grant Date: 2019-10-15
+•	Artificial intelligence-based method and apparatus for singing voice synthesis
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN106373580B (China)
+o	Status: Granted
+o	Grant Date: 2019-10-15
+•	Product testing method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN106547686B (China)
+o	Status: Granted
+o	Grant Date: 2019-09-03
+•	Artificial intelligence-based musical instrument simulation method and apparatus using action recognition
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BAIDU ONLINE NETWORK TECH (BEIJING) CO LTD
+o	Patent No.: CN105931627B (China)
+o	Status: Granted
+o	Grant Date: 2019-07-05
+•	Artificial intelligence-based user behavior analysis method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: CN106557410B (China)
+o	Status: Granted
+o	Grant Date: 2019-05-31
+•	Search method and apparatus
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BAIDU ONLINE NETWORK TECH (BEIJING) CO LTD
+o	Patent No.: CN104035957B (China)
+o	Status: Granted
+o	Grant Date: 2019-01-25
+ 
+2018
+•	Artificial intelligence-based method and device for human-machine interaction
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: WO2018045646A1 (WIPO)
+o	Status: PCT Application Published
+o	Publication Date: 2018-03-15
+•	Artificial intelligence-based information notification method and device
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BEIJING BAIDU NETCOM SCIENCE AND TECHNOLOGY CO., LTD.
+o	Patent No.: WO2018040341A1 (WIPO)
+o	Status: PCT Application Published
+o	Publication Date: 2018-03-08
+ 
+2017
+•	Man-machine interaction guiding method and device based on artificial intelligence
+o	Inventors: Chao Zhou, et al.
+o	Assignee: BAIDU ONLINE NETWORK TECH (BEIJING) CO LTD
+o	Patent No.: WO2017041369A1 (WIPO)
+o	Status: PCT Application Published
+o	Publication Date: 2017-03-16
 
-2026
-[Your 2026 English Patent Title Here / 2026年中文专利的英文翻译名称]
-
-Inventors: Chao Zhou, [Co-inventor Name 1], [Co-inventor Name 2]
-
-Assignee: Tencent Technology (Shenzhen) Co., Ltd.
-
-Patent No.: [e.g., ZL20261XXXXXXX.X] (China)
-
-Status: Granted
-
-Grant Date: 2026-XX-XX
-
-2025
-[Your 2025 US Patent Title Here / 2025年美国专利名称]
-
-Inventors: [Lead Inventor Name], Chao Zhou
-
-Assignee: Tencent Holdings Ltd.
-
-Patent No.: [e.g., US11223344B2] (US)
-
-Status: Granted
-
-Grant Date: 2025-XX-XX
-
-[Your 2025 Pending Patent Title Here / 2025年申请中或已公开的专利名称]
-
-Inventors: Chao Zhou, [Co-inventor Name]
-
-Assignee: Tencent Technology (Shenzhen) Co., Ltd.
-
-Patent No.: [e.g., CN112233445A] (China)
-
-Status: Pending (Application Published)
-
-Filing Date: 2025-XX-XX
-
-2024
-[Your 2024 Patent Title Here / 2024年专利名称]
-
-Inventors: Chao Zhou, [Co-inventor Name]
-
-Assignee: Tencent Technology (Shenzhen) Co., Ltd.
-
-Patent No.: [e.g., ZL20241XXXXXXX.X] (China)
-
-Status: Granted
-
-Grant Date: 2024-XX-XX
+<img width="415" height="694" alt="image" src="https://github.com/user-attachments/assets/b726f081-bfb6-47b6-80a5-b67f72e18921" />
