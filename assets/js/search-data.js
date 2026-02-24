@@ -419,8 +419,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+            },},{id: "news-paper-topic-guided-multi-faceted-semantic-disentanglement-for-ctr-prediction-accepted-by-acm-mm-2025",
+          title: 'Paper “Topic Guided Multi-faceted Semantic Disentanglement for CTR prediction” accepted by ACM MM...',
           description: "",
           section: "News",},{id: "news-a-long-announcement-with-details",
           title: 'A long announcement with details',
