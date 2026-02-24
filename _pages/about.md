@@ -12,6 +12,7 @@ profile:
   more_info: >
     <p>Shenzhen Headquarters, Tencent Binhai Building, No. 33, Haitian Second Road, Nanshan District</p>
     <p>Shen Zhen, Guang Dong Province, China</p>
+    <p>Email: derekczhou"at"tencent.com</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
