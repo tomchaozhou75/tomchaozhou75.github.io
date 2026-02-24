@@ -422,12 +422,7 @@ ninja.data = [{
             },},{id: "news-paper-topic-guided-multi-faceted-semantic-disentanglement-for-ctr-prediction-accepted-by-acm-mm-2025",
           title: 'Paper “Topic Guided Multi-faceted Semantic Disentanglement for CTR prediction” accepted by ACM MM...',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
+          section: "News",},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
           section: "News",},{id: "projects-project-1",
