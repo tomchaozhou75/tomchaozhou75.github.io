@@ -7,14 +7,55 @@ nav: true
 nav_order: 4
 ---
 
-<!-- _pages/articles.md -->
+I currently hold 65 patents in the United States and China, primarily focusing on artificial intelligence, large-scale recommendation systems, and machine learning technologies. The selected patents below are sorted by grant or filing year (newest first).
 
-<!-- Bibsearch Feature -->
+2026
+[Your 2026 English Patent Title Here / 2026年中文专利的英文翻译名称]
 
-{% include bib_search.liquid %}
+Inventors: Chao Zhou, [Co-inventor Name 1], [Co-inventor Name 2]
 
-<div class="publications">
+Assignee: Tencent Technology (Shenzhen) Co., Ltd.
 
-{% bibliography %}
+Patent No.: [e.g., ZL20261XXXXXXX.X] (China)
 
-</div>
+Status: Granted
+
+Grant Date: 2026-XX-XX
+
+2025
+[Your 2025 US Patent Title Here / 2025年美国专利名称]
+
+Inventors: [Lead Inventor Name], Chao Zhou
+
+Assignee: Tencent Holdings Ltd.
+
+Patent No.: [e.g., US11223344B2] (US)
+
+Status: Granted
+
+Grant Date: 2025-XX-XX
+
+[Your 2025 Pending Patent Title Here / 2025年申请中或已公开的专利名称]
+
+Inventors: Chao Zhou, [Co-inventor Name]
+
+Assignee: Tencent Technology (Shenzhen) Co., Ltd.
+
+Patent No.: [e.g., CN112233445A] (China)
+
+Status: Pending (Application Published)
+
+Filing Date: 2025-XX-XX
+
+2024
+[Your 2024 Patent Title Here / 2024年专利名称]
+
+Inventors: Chao Zhou, [Co-inventor Name]
+
+Assignee: Tencent Technology (Shenzhen) Co., Ltd.
+
+Patent No.: [e.g., ZL20241XXXXXXX.X] (China)
+
+Status: Granted
+
+Grant Date: 2024-XX-XX
